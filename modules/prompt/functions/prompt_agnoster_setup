@@ -132,14 +132,20 @@ prompt_status() {
 }
 
 # Taskwarrior: number of tasks.
-prompt_task () {
-  local count
-  count=$(task status:pending count) 
-  if [[ $count -gt 0 ]]
-  then
-    prompt_segment red white "Tasks: $count"
-  fi
-}
+task &> /dev/null
+if [[ $? -eq 0 ]] 
+then
+  prompt_task () {
+    local count
+    count=$(task status:pending count) 
+    if [[ $count -gt 0 ]]
+    then
+      prompt_segment red white "Tasks: $count"
+    fi
+  }
+else
+  prompt_task() {}
+fi
 
 ### current time
 ### function added by digitalformula
