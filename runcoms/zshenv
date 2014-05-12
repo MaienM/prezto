@@ -5,6 +5,14 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+
+#
+# Term
+#
+if [[ "$TERM" == "xterm" ]]; then
+  export TERM='xterm-256color'
+fi
+
 #
 # Browser
 #
