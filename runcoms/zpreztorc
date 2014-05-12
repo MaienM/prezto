@@ -36,8 +36,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
-  'reload'
+  'prompt' 
 
 #
 # Editor
