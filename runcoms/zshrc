@@ -21,4 +21,3 @@ done
 
 # Make esc more responsive.
 export KEYTIMEOUT=1
-bindkey -rpM viins '^['
