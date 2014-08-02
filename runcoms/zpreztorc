@@ -36,7 +36,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' 
+  'prompt' \
+  'opp'
 
 #
 # Editor
@@ -89,8 +90,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'agnoster'
-DEFAULT_USER='michon'
+zstyle ':prezto:module:prompt' theme 'off'
 
 #
 # Ruby
@@ -156,4 +156,4 @@ DEFAULT_USER='michon'
 # zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+# zstyle ':prezto:module:tmux:auto-start' remote 'yes'

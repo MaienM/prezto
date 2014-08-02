@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER='less'
 
 #
@@ -45,6 +45,8 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   $path
+  $HOME/bin
+  $HOME/.{local,rvm}/bin
 )
 
 #
@@ -75,3 +77,11 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
+#
+# Powerline
+#
+
+export POWERLINE_REPO="$HOME/dotfiles/powerline"
+export POWERLINE_COMMAND="$POWERLINE_REPO/scripts/powerline"
+export POWERLINE_CONFIG_COMMAND="$POWERLINE_REPO/scripts/powerline-config"
+export POWERLINE_LINT_COMMAND="$POWERLINE_REPO/scripts/powerline-lint"
