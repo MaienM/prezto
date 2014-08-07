@@ -82,6 +82,14 @@ fi
 #
 
 export POWERLINE_REPO="$HOME/dotfiles/powerline"
-export POWERLINE_COMMAND="$POWERLINE_REPO/scripts/powerline"
+export POWERLINE_COMMAND="$POWERLINE_REPO/client/powerline"
 export POWERLINE_CONFIG_COMMAND="$POWERLINE_REPO/scripts/powerline-config"
 export POWERLINE_LINT_COMMAND="$POWERLINE_REPO/scripts/powerline-lint"
+export POWERLINE_DAEMON_COMMAND="$POWERLINE_REPO/scripts/powerline-daemon"
+
+#
+# Python virtual environments.
+#
+
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/coding"

@@ -12,6 +12,10 @@ fi
 
 # Source powerline.
 source $POWERLINE_REPO/powerline/bindings/zsh/powerline.zsh
+$POWERLINE_DAEMON_COMMAND -q
+
+# Source virtualenvwrapper.
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Source aliases.
 for file in ~/.aliases/**/*.sh;
