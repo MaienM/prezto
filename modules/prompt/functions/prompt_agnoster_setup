@@ -131,22 +131,6 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black black "$symbols"
 }
 
-# Taskwarrior: number of tasks.
-task &> /dev/null
-if [[ $? -eq 0 ]] 
-then
-  prompt_task () {
-    local count
-    count=$(task status:pending count) 
-    if [[ $count -gt 0 ]]
-    then
-      prompt_segment red white "Tasks: $count"
-    fi
-  }
-else
-  prompt_task() {}
-fi
-
 ### current time
 ### function added by digitalformula
 prompt_time() {
@@ -160,6 +144,10 @@ prompt_hostname() {
   prompt_segment green black "$hostname"
 }
 
+prompt_virtualenv() {
+  [[ -n $VIRTUAL_ENV ]] && prompt_segment green black "\u00A7$(basename $VIRTUAL_ENV)"
+}
+
 ## Main prompt (Old version, includes currect directory)
 build_prompt() {
   RETVAL=$?
@@ -167,8 +155,8 @@ build_prompt() {
   #prompt_time
   prompt_context
   prompt_dir
+  prompt_virtualenv
   prompt_git
-  prompt_task
   prompt_end
 }
 
@@ -203,6 +191,9 @@ function prompt_agnoster_setup {
   zstyle ':prezto:module:git' info \
     'prompt'  ' %F{blue}git%f$(coalesce "%b" "%p" "%c")%s' \
     'rprompt' '%A%B%S%a%d%m%r%U%u'
+    
+# Disable default virtualenv prompt.
+VIRTUAL_ENV_DISABLE_PROMPT=1
     
 # Original theme's comments left intact:
 
