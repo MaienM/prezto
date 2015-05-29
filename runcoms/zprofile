@@ -78,16 +78,6 @@ if [[ ! -d "$TMPPREFIX" ]]; then
 fi
 
 #
-# Powerline
-#
-
-export POWERLINE_REPO="$HOME/dotfiles/powerline"
-export POWERLINE_COMMAND="$POWERLINE_REPO/scripts/powerline-render"
-export POWERLINE_CONFIG_COMMAND="$POWERLINE_REPO/scripts/powerline-config"
-export POWERLINE_LINT_COMMAND="$POWERLINE_REPO/scripts/powerline-lint"
-export POWERLINE_DAEMON_COMMAND="$POWERLINE_REPO/scripts/powerline-daemon"
-
-#
 # Python virtual environments.
 #
 
