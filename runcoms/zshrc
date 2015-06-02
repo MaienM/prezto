@@ -11,11 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Source powerline.
-source $POWERLINE_REPO/powerline/bindings/zsh/powerline.zsh
-$POWERLINE_DAEMON_COMMAND -q
+source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Source virtualenvwrapper.
-source /usr/local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper_lazy.sh
 
 # Source aliases.
 for file in ~/.aliases/**/*.sh;
