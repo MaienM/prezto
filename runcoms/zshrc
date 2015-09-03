@@ -5,16 +5,28 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+#
+# Load the profile.
+#
+if [ -f $HOME/.zprofile ]; then
+  source $HOME/.zprofile;
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # Source powerline.
-source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]; then
+  source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh;
+  $POWERLINE_DAEMON_COMMAND -q
+fi
 
 # Source virtualenvwrapper.
-source ~/.local/bin/virtualenvwrapper_lazy.sh
+if [ -f ~/.local/bin/virtualenvwrapper_lazy.sh ]; then
+  source ~/.local/bin/virtualenvwrapper_lazy.sh;
+fi
 
 # Source aliases.
 for file in ~/.aliases/**/*.sh;
