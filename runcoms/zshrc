@@ -5,6 +5,22 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Load the alias helpers.
+source ~/.aliases/helpers/*.sh;
+
+# Function to offer to auto-install missing stuff.
+function install_maybe() {
+  if [ -n $(which $1) ]; then
+    if prompt_confirm "Do you want to auto-install it?" "Y"; then
+      echo "$@" | sh
+    else
+      echo "Run '$@' to install it manually."
+    fi
+  else
+    echo "You need $1 to install it. Install $1 and run '$@', or restart zsh."
+  fi
+}
+
 #
 # Load the profile.
 #
@@ -20,12 +36,26 @@ fi
 # Source powerline.
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]; then
   source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh;
-  $POWERLINE_DAEMON_COMMAND -q
+  "${POWERLINE_COMMAND}-daemon" -q
+else
+  echo "Powerline is not installed!"
+  install_maybe pip2.7 install --user powerline-status
 fi
 
 # Source virtualenvwrapper.
 if [ -f ~/.local/bin/virtualenvwrapper_lazy.sh ]; then
   source ~/.local/bin/virtualenvwrapper_lazy.sh;
+else
+  echo "VirtualEnvWrapper is not installed!"
+  install_maybe pip install --user virtualenvwrapper
+fi
+
+# Source FZF.
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+else
+  echo "FZF is not installed!"
+  install_maybe git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \&\& ~/.fzf/install
 fi
 
 # Source aliases.
