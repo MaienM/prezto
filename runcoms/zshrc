@@ -10,7 +10,7 @@ source ~/.aliases/helpers/*.sh;
 
 # Function to offer to auto-install missing stuff.
 function install_maybe() {
-  if [ -n $(which $1) ]; then
+  if [[ -n $(which $1) ]]; then
     if prompt_confirm "Do you want to auto-install it?" "Y"; then
       echo "$@" | sh
     else
@@ -24,7 +24,7 @@ function install_maybe() {
 #
 # Load the profile.
 #
-if [ -f $HOME/.zprofile ]; then
+if [[ -f $HOME/.zprofile ]]; then
   source $HOME/.zprofile;
 fi
 
@@ -34,7 +34,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Source powerline.
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]; then
+if [[ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
   source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh;
   "${POWERLINE_COMMAND}-daemon" -q
 else
@@ -43,7 +43,7 @@ else
 fi
 
 # Source virtualenvwrapper.
-if [ -f ~/.local/bin/virtualenvwrapper_lazy.sh ]; then
+if [[ -f ~/.local/bin/virtualenvwrapper_lazy.sh ]]; then
   source ~/.local/bin/virtualenvwrapper_lazy.sh;
 else
   echo "VirtualEnvWrapper is not installed!"
@@ -51,7 +51,7 @@ else
 fi
 
 # Source FZF.
-if [ -f ~/.fzf.zsh ]; then
+if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
 else
   echo "FZF is not installed!"
